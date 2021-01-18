@@ -18,4 +18,70 @@ This will be an application that should store incoming and outgoing financial tr
 
 - [X] should be able to delete a transaction. Returns empty response with 204 status on exclusion.
 
-- [X] should be able to import transactions: Para que esse teste passe, sua aplicação deve permitir que seja importado um arquivo csv, contendo o seguinte modelo. Com o arquivo importado, você deve permitir que seja criado no banco de dados todos os registros e categorias que estavam presentes nesse arquivo, e retornar todas as transactions que foram importadas.
+- [X] should be able to import transactions: Should allow upload of a CSV file, create transactions and categories read from this file, and finally, should return all imported transactions.
+
+# Example of Transaction
+```
+{
+  "id": "uuid",
+  "title": "Payment",
+  "value": 8000,
+  "type": "income",
+  "category": "Salary"
+}
+```
+
+# Example of GET /Transactions
+```
+{
+  "transactions": [
+    {
+      "id": "4da8a022-e686-4a79-b25f-cb40f414fa41",
+      "title": "Loan",
+      "type": "income",
+      "value": 1500,
+      "created_at": "2021-01-18T03:54:00.891Z",
+      "updated_at": "2021-01-18T03:54:00.891Z",
+      "category": {
+        "id": "e3e799af-9d48-4576-8553-d3405b327b7d",
+        "title": "Others",
+        "created_at": "2021-01-18T03:54:00.877Z",
+        "updated_at": "2021-01-18T03:54:00.877Z"
+      }
+    },
+    {
+      "id": "5ba9a051-bd1d-48e1-a15f-0f0fd77e96bc",
+      "title": "Website Hosting",
+      "type": "outcome",
+      "value": 50,
+      "created_at": "2021-01-18T03:54:00.891Z",
+      "updated_at": "2021-01-18T03:54:00.891Z",
+      "category": {
+        "id": "e3e799af-9d48-4576-8553-d3405b327b7d",
+        "title": "Others",
+        "created_at": "2021-01-18T03:54:00.877Z",
+        "updated_at": "2021-01-18T03:54:00.877Z"
+      }
+    },
+    {
+      "id": "d2e0bf26-da33-478c-96eb-6ba2c7926736",
+      "title": "Ice cream",
+      "type": "outcome",
+      "value": 3,
+      "created_at": "2021-01-18T03:54:00.891Z",
+      "updated_at": "2021-01-18T03:54:00.891Z",
+      "category": {
+        "id": "48620ee7-219e-4d11-bf29-84650f72f961",
+        "title": "Food",
+        "created_at": "2021-01-18T03:54:00.877Z",
+        "updated_at": "2021-01-18T03:54:00.877Z"
+      }
+    }
+  ],
+  "balance": {
+    "income": 1500,
+    "outcome": 53,
+    "total": 1447
+  }
+}
+```
