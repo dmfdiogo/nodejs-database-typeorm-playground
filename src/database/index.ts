@@ -5,6 +5,10 @@ export default async (name = 'default'): Promise<Connection> => {
 
   return createConnection(
     Object.assign(defaultOptions, {
+      type: 'postgres',
+      extra: {
+        decimalNumbers: true,
+      },
       name,
       database:
         process.env.NODE_ENV === 'test'
